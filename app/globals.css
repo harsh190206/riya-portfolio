@@ -4,6 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Professional Dark Blue & White Color Scheme */
+  /* Changed to dark theme as primary */
   --background: oklch(0.08 0.012 250);
   --foreground: oklch(0.96 0.005 250);
   --card: oklch(0.12 0.015 250);
@@ -118,109 +120,41 @@
 @layer base {
   * {
     @apply border-border;
+    /* removed invalid outline-ring/50 utility class */
   }
-
   body {
     @apply bg-background text-foreground;
   }
-
+  
   html {
     scroll-behavior: smooth;
   }
-
+  
   ::-webkit-scrollbar {
     width: 10px;
   }
+  
   ::-webkit-scrollbar-track {
     @apply bg-muted;
   }
+  
   ::-webkit-scrollbar-thumb {
     @apply bg-chart-1 rounded-full hover:bg-chart-2;
   }
-
+  
+  /* Smooth fade-in animation */
   @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-
+  
   .animate-fade-in-up {
     animation: fadeInUp 0.6s ease-out;
-  }
-}
-
-/* --------------------------------------------------
-   RESPONSIVE ONLY (Added as requested)
-   -------------------------------------------------- */
-
-/* Mobile */
-@media (max-width: 640px) {
-  body { padding: 0 1rem; }
-
-  .container, .wrapper, section {
-    padding: 1rem !important;
-  }
-
-  h1 { font-size: 1.75rem !important; }
-  h2 { font-size: 1.4rem !important; }
-  p, span, li { font-size: 0.95rem !important; }
-
-  img, video, canvas {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  .grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .flex {
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-
-  .sidebar, .nav, .menu {
-    width: 100% !important;
-    position: relative !important;
-  }
-}
-
-/* Tablet */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .flex {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 1.2rem;
-  }
-
-  h1 { font-size: 2rem !important; }
-}
-
-/* Small Laptop */
-@media (min-width: 1025px) and (max-width: 1366px) {
-  .container {
-    max-width: 1100px;
-    margin: auto;
-  }
-
-  h1 { font-size: 2.4rem; }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  }
-}
-
-/* Large Screens */
-@media (min-width: 1367px) {
-  .container {
-    max-width: 1400px !important;
-    margin: auto !important;
-  }
-
-  .grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
   }
 }
